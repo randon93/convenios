@@ -1,11 +1,11 @@
 package com.grupo.xxiv.convenios.model.dao;
 
-import com.grupo.xxiv.convenios.model.entity.Institucion;
+import com.grupo.xxiv.convenios.model.entity.InstitucionEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IInstitucionDao extends JpaRepository<Institucion, Long> {
+public interface IInstitucionDao extends JpaRepository<InstitucionEntity, Long> {
 
-    Institucion findByCorreo(String correo);
+    InstitucionEntity findByCorreo(String correo);
 
-    Institucion findByNombre(String nombre);
+    InstitucionEntity findByNombre(String nombre);
 }

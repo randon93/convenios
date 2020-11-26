@@ -1,6 +1,6 @@
 package com.grupo.xxiv.convenios.controller;
 
-import com.grupo.xxiv.convenios.model.entity.Institucion;
+import com.grupo.xxiv.convenios.model.entity.InstitucionEntity;
 import com.grupo.xxiv.convenios.model.service.InstitucionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,25 +25,25 @@ public class InstitucionController {
 
     @PostMapping("/insert")
     @ResponseBody
-    public Long insertInstitucion(@RequestBody @Validated Institucion institucion) {
-        return institucionService.save(institucion).getId();
+    public Long insertInstitucion(@RequestBody @Validated InstitucionEntity institucionEntity) {
+        return institucionService.save(institucionEntity).getId();
     }
 
     @GetMapping()
     @ResponseBody
-    public List<Institucion> getInstituciones() {
+    public List<InstitucionEntity> getInstituciones() {
         return institucionService.findAll();
     }
 
     @GetMapping("/correo/{correo}")
     @ResponseBody
-    public Institucion getInstitucionByCorreo(@PathVariable String correo){
+    public InstitucionEntity getInstitucionByCorreo(@PathVariable String correo){
         return institucionService.findByCorreo(correo);
     }
 
     @GetMapping("/nombre/{nombre}")
     @ResponseBody
-    public Institucion getnstitucionByNombre(@PathVariable String nombre) {
+    public InstitucionEntity getnstitucionByNombre(@PathVariable String nombre) {
         return institucionService.findByNombre(nombre);
     }
 }

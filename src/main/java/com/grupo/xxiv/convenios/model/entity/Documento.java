@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.nio.ByteBuffer;
 
 @Table(name = "documento")
 @Entity
@@ -28,5 +27,5 @@ public class Documento implements Serializable {
     private String data;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Convenio  convenio;
+    private Convenio convenio;
 }

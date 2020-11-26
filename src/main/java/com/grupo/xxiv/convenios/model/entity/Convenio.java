@@ -28,7 +28,7 @@ public class Convenio implements Serializable {
     private Date fechaFin;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Institucion institucion;
+    private InstitucionEntity institucionEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Departamento departamento;
