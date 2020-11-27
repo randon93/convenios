@@ -12,9 +12,7 @@ import java.io.Serializable;
 @Table(name = "administrador")
 @Entity
 @Data
-public class Administrador implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class AdministradorEntity extends common.types.Entity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

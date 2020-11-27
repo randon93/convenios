@@ -3,16 +3,17 @@ package com.grupo.xxiv.convenios.model.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.io.Serializable;
 
-@Table(name = "departamento")
+@Table(name = "documento")
 @Entity
 @Data
-public class Departamento implements Serializable {
+public class DocumentoEntity extends common.types.Entity<Long> {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,5 +23,8 @@ public class Departamento implements Serializable {
 
     private String nombre;
 
-    private String encargado;
+    private String data;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ConvenioEntity convenioEntity;
 }

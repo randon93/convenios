@@ -9,13 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "convenio")
 @Entity
 @Data
-public class Convenio implements Serializable {
+public class ConvenioEntity extends common.types.Entity<Long> {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +30,7 @@ public class Convenio implements Serializable {
     private InstitucionEntity institucionEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Departamento departamento;
+    private DepartamentoEntity departamentoEntity;
 
     private TipoConvenio tipoConvenio;
 
