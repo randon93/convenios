@@ -1,18 +1,19 @@
 package com.grupo.xxiv.convenios.model.entity;
 
-import common.types.Entity;
+
 import lombok.Data;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Table(name = "institucion")
+@Entity
 @Data
-public class InstitucionEntity extends Entity<Long> {
+public class InstitucionEntity extends common.types.Entity<Long> {
 
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

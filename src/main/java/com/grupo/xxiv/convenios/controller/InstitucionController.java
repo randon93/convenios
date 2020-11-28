@@ -26,24 +26,24 @@ public class InstitucionController {
     @PostMapping("/insert")
     @ResponseBody
     public Long insertInstitucion(@RequestBody @Validated InstitucionEntity institucionEntity) {
-        return institucionService.save(institucionEntity).getId();
+        return null;
     }
 
     @GetMapping()
     @ResponseBody
     public List<InstitucionEntity> getInstituciones() {
-        return institucionService.findAll();
+        return null;
     }
 
     @GetMapping("/correo/{correo}")
     @ResponseBody
     public InstitucionEntity getInstitucionByCorreo(@PathVariable String correo){
-        return institucionService.findByCorreo(correo);
+        return null;
     }
 
     @GetMapping("/nombre/{nombre}")
     @ResponseBody
     public InstitucionEntity getnstitucionByNombre(@PathVariable String nombre) {
-        return institucionService.findByNombre(nombre);
+        return null;
     }
 }
