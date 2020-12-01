@@ -17,7 +17,6 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@Profile({"dev"})
 public class SwaggerConfig {
     @Bean
     public Docket api() {
@@ -25,7 +24,7 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .apis(RequestHandlerSelectors.basePackage("com.group.xiv.api.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.grupo.xxiv.convenios.controller"))
                 .build()
                 .globalOperationParameters(headerParameters());
     }
