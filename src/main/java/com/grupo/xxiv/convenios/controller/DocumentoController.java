@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/documento")
-public class DocumentoController extends ControllerImpl<DocumentoDomain, Long, DocumentoFilter> {
+public class DocumentoController extends ControllerImpl<DocumentoDomain, Long> {
 
     @Autowired
     private DocumentoService documentoService;

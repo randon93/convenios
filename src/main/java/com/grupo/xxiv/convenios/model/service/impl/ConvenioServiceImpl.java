@@ -7,7 +7,9 @@ import com.grupo.xxiv.convenios.model.service.ConvenioService;
 import common.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ConvenioServiceImpl
         extends ServiceImpl<ConvenioDomain, ConvenioEntity, Long> implements ConvenioService {
 
