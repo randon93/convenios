@@ -2,19 +2,23 @@ package com.grupo.xxiv.convenios.model.entity;
 
 import lombok.Data;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "convenio")
 @Entity
 @Data
-public class ConvenioEntity extends common.types.Entity<Long> {
+public class ConvenioEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,6 +36,12 @@ public class ConvenioEntity extends common.types.Entity<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     private DepartamentoEntity departamentoEntity;
 
-    private TipoConvenio tipoConvenio;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TipoConvenioEntity tipoConvenio;
+
+    @OneToMany(mappedBy = "convenioEntity",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private List<DocumentoEntity> documentoEntity;
 
 }

@@ -1,7 +1,15 @@
 package com.grupo.xxiv.convenios.model.service;
 
 import com.grupo.xxiv.convenios.model.domain.DocumentoDomain;
-import common.service.Service;
+import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
 
-public interface DocumentoService extends Service<DocumentoDomain, Long> {
+public interface DocumentoService {
+
+    RespuestaGenericaDto insert(DocumentoDomain domain);
+
+    RespuestaGenericaDto update(DocumentoDomain domain);
+
+    void delete(Long id);
+
+    RespuestaGenericaDto listAll();
 }

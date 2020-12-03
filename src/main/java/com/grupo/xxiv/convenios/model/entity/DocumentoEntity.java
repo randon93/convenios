@@ -9,11 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Table(name = "documento")
 @Entity
 @Data
-public class DocumentoEntity extends common.types.Entity<Long> {
+public class DocumentoEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

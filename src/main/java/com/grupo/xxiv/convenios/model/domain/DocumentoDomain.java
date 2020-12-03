@@ -13,5 +13,5 @@ public class DocumentoDomain extends DomainBean<Long> {
 
     private String data;
 
-    private ConvenioEntity convenioEntity;
+    private ConvenioDomain convenioDomain;
 }

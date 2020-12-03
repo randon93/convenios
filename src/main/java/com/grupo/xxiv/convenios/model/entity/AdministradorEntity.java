@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "administrador")
 @Entity
 @Data
-public class AdministradorEntity extends common.types.Entity<Long> {
+public class AdministradorEntity  implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

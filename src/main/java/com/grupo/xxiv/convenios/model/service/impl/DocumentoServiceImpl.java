@@ -2,23 +2,42 @@ package com.grupo.xxiv.convenios.model.service.impl;
 
 import com.grupo.xxiv.convenios.model.dao.IDocumentoDao;
 import com.grupo.xxiv.convenios.model.domain.DocumentoDomain;
+import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
 import com.grupo.xxiv.convenios.model.entity.DocumentoEntity;
 import com.grupo.xxiv.convenios.model.service.DocumentoService;
-import common.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class DocumentoServiceImpl
-        extends ServiceImpl<DocumentoDomain, DocumentoEntity, Long>
-        implements DocumentoService {
+public class DocumentoServiceImpl implements DocumentoService {
 
     @Autowired
     private IDocumentoDao iDocumentoDao;
 
-    @Override
     protected CrudRepository<DocumentoEntity, Long> getDao() {
         return iDocumentoDao;
+    }
+
+    @Override
+    public RespuestaGenericaDto insert(DocumentoDomain domain) {
+        return null;
+    }
+
+    @Override
+    public RespuestaGenericaDto update(DocumentoDomain domain) {
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
+    }
+
+    @Override
+    public RespuestaGenericaDto listAll() {
+        return null;
     }
 }

@@ -1,7 +1,10 @@
 package com.grupo.xxiv.convenios.model.domain;
 
+import com.grupo.xxiv.convenios.model.entity.ConvenioEntity;
 import common.types.DomainBean;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class InstitucionDomain extends DomainBean<Long> {
@@ -15,5 +18,7 @@ public class InstitucionDomain extends DomainBean<Long> {
     private String direccion;
 
     private String telefono;
+
+    private List<ConvenioDomain> convenioEntities;
 
 }

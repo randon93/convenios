@@ -1,8 +1,19 @@
 package com.grupo.xxiv.convenios.model.service;
 
 import com.grupo.xxiv.convenios.model.domain.InstitucionDomain;
-import common.service.Service;
+import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
+import com.grupo.xxiv.convenios.model.entity.InstitucionEntity;
 
-public interface InstitucionService extends Service<InstitucionDomain, Long> {
+import java.util.List;
+
+public interface InstitucionService {
+
+    RespuestaGenericaDto insert(InstitucionDomain domain);
+
+    RespuestaGenericaDto update(InstitucionDomain domain);
+
+    void delete(Long id);
+
+    RespuestaGenericaDto listAll();
 
 }

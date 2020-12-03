@@ -10,4 +10,5 @@ public class RespuestaGenericaDto {
     private String mensaje;
     private boolean estado;
     private Object data;
+
 }

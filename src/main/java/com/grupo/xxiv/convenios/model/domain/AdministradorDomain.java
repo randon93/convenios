@@ -13,4 +13,5 @@ public class AdministradorDomain extends DomainBean<Long> {
     private String apellido;
     private String correo;
     private String contraseña;
+
 }
