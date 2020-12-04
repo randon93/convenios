@@ -1,12 +1,11 @@
 package com.grupo.xxiv.convenios.model.service.impl;
 
-import com.grupo.xxiv.convenios.converter.DepartamentoMapper;
-import com.grupo.xxiv.convenios.model.dao.IDepartamentoDao;
-import com.grupo.xxiv.convenios.model.domain.DepartamentoDomain;
+import com.grupo.xxiv.convenios.converter.TipoConvenioMapper;
+import com.grupo.xxiv.convenios.model.dao.TipoConvenioDao;
+import com.grupo.xxiv.convenios.model.domain.TipoConvenioDomain;
 import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
-import com.grupo.xxiv.convenios.model.entity.DepartamentoEntity;
-import com.grupo.xxiv.convenios.model.entity.InstitucionEntity;
-import com.grupo.xxiv.convenios.model.service.DepartamentoService;
+import com.grupo.xxiv.convenios.model.entity.TipoConvenioEntity;
+import com.grupo.xxiv.convenios.model.service.TipoConvenioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -16,43 +15,43 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class DepartamentoServiceImpl implements DepartamentoService {
+public class TipoConvenioServiceImpl implements TipoConvenioService {
 
     @Autowired
-    private IDepartamentoDao departamentoDao;
+    private TipoConvenioDao tipoConvenioDao;
 
     @Autowired
-    private DepartamentoMapper departamentoMapper;
+    private TipoConvenioMapper tipoConvenioMapper;
 
-    protected CrudRepository<DepartamentoEntity, Long> getDao() {
-        return departamentoDao;
+    protected CrudRepository<TipoConvenioEntity, Long> getDao() {
+        return tipoConvenioDao;
     }
 
     @Override
-    public RespuestaGenericaDto insert(DepartamentoDomain domain) {
+    public RespuestaGenericaDto insert(TipoConvenioDomain domain) {
         if (Objects.isNull(domain)) {
             return RespuestaGenericaDto.error("Informacion vacia");
         }
-        DepartamentoEntity e = departamentoMapper.convertToEntity(domain);
+        TipoConvenioEntity e = tipoConvenioMapper.convertToEntity(domain);
         if (Objects.isNull(e)) {
-            return  RespuestaGenericaDto.error("Ocurrio un error en Converter Departamento");
+            return RespuestaGenericaDto.error("Ocurrio un error en Converter Institucion");
         }
         Long id = getDao().save(e).getId();
         return RespuestaGenericaDto.ok(id);
     }
 
     @Override
-    public RespuestaGenericaDto update(DepartamentoDomain domain) {
+    public RespuestaGenericaDto update(TipoConvenioDomain domain) {
         if (!getDao().existsById(domain.getId())) {
             return RespuestaGenericaDto.error("No se encontro la institucion " + domain.getId());
         }
-        DepartamentoEntity e = departamentoMapper.convertToEntity(domain);
+        TipoConvenioEntity e = tipoConvenioMapper.convertToEntity(domain);
         return RespuestaGenericaDto.ok(getDao().save(e));
     }
 
     @Override
     public RespuestaGenericaDto delete(Long id) {
-        DepartamentoEntity e = getDao().findById(id).orElse(null);
+        TipoConvenioEntity e = getDao().findById(id).orElse(null);
         if (Objects.isNull(e)) {
             return RespuestaGenericaDto.error("No se encontro la institucion " + id);
         }
@@ -62,10 +61,10 @@ public class DepartamentoServiceImpl implements DepartamentoService {
 
     @Override
     public RespuestaGenericaDto listAll() {
-        List<DepartamentoDomain> departamentos = new ArrayList<>();
+        List<TipoConvenioDomain> tipoConvenioDomains = new ArrayList<>();
         getDao().findAll().forEach(
-                dd -> departamentos.add(departamentoMapper.convertToDomain(dd))
+                tcd -> tipoConvenioDomains.add(tipoConvenioMapper.convertToDomain(tcd))
         );
-        return RespuestaGenericaDto.ok(departamentos);
+        return RespuestaGenericaDto.ok(tipoConvenioDomains);
     }
 }

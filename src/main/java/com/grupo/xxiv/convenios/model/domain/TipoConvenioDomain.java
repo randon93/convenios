@@ -1,10 +1,14 @@
 package com.grupo.xxiv.convenios.model.domain;
 
+import common.types.DomainBean;
+import lombok.Data;
+
 import java.util.List;
 
-public class TipoConvenioDomain {
+@Data
+public class TipoConvenioDomain extends DomainBean<Long> {
 
     private Long id;
     private String nombre;
-    private List<ConvenioDomain> convenioEntities;
+    private List<Long> convenios;
 }

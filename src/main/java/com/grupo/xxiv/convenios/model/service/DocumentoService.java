@@ -9,7 +9,7 @@ public interface DocumentoService {
 
     RespuestaGenericaDto update(DocumentoDomain domain);
 
-    void delete(Long id);
+    RespuestaGenericaDto delete(Long id);
 
     RespuestaGenericaDto listAll();
 }

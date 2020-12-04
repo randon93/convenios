@@ -4,6 +4,7 @@ import common.service.ConverterService;
 import common.service.ValidationService;
 import common.service.impl.ConverterServiceImpl;
 import common.service.impl.ValidationServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 @Configuration
+@Slf4j
 public class GeneralConfig {
 
     @Autowired
@@ -91,6 +93,7 @@ public class GeneralConfig {
         System.out.println("TimeZone del sistema: " + TimeZone.getDefault().toZoneId());
         TimeZone timeZone = TimeZone.getTimeZone(timeZoneProperties.getZoneId());
         TimeZone.setDefault(timeZone);
+        log.info(" :: TIMEZONE :: NUEVA TIMEZONE :: " + timeZone.toZoneId());
         System.out.println("Nueva TimeZone: " + timeZone.toZoneId());
         return timeZone;
     }

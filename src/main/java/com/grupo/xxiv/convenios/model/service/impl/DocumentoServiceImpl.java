@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class DocumentoServiceImpl implements DocumentoService {
 
@@ -32,8 +30,8 @@ public class DocumentoServiceImpl implements DocumentoService {
     }
 
     @Override
-    public void delete(Long id) {
-
+    public RespuestaGenericaDto delete(Long id) {
+        return null;
     }
 
     @Override

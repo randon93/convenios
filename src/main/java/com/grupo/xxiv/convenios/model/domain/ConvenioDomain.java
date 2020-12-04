@@ -13,8 +13,8 @@ public class ConvenioDomain extends DomainBean<Long> {
     private String nombre;
     private Date fechaInicio;
     private Date fechaFin;
-    private InstitucionDomain institucionDomain;
-    private DepartamentoDomain departamentoDomain;
-    private TipoConvenioDomain tipoConvenioDomain;
-    private List<DocumentoDomain> documentoDomains;
+    private Long institucionDomain;
+    private Long departamentoDomain;
+    private Long tipoConvenioDomain;
+    private List<Long> documentoDomains;
 }
