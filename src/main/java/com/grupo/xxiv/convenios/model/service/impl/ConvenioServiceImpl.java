@@ -7,6 +7,9 @@ import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
 import com.grupo.xxiv.convenios.model.entity.ConvenioEntity;
 import com.grupo.xxiv.convenios.model.service.ConvenioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +26,7 @@ public class ConvenioServiceImpl implements ConvenioService {
     @Autowired
     private ConvenioMapper convenioMapper;
 
-    protected CrudRepository<ConvenioEntity, Long> getDao() {
+    protected JpaRepository<ConvenioEntity, Long> getDao() {
         return iConvenioDao;
     }
 
@@ -51,12 +54,19 @@ public class ConvenioServiceImpl implements ConvenioService {
         return RespuestaGenericaDto.ok(null);
     }
 
+    @Override
     public RespuestaGenericaDto listAll() {
         List<ConvenioDomain> convenioDomains = new ArrayList<>();
         getDao().findAll().forEach(
                 ce -> convenioDomains.add(convenioMapper.convertToDomain(ce))
         );
         return RespuestaGenericaDto.ok(convenioDomains);
+    }
+
+    @Override
+    public RespuestaGenericaDto listAll(Pageable pageRequest) {
+        Page<ConvenioEntity> convenios = (Page) getDao().findAll(pageRequest).getContent();
+        return RespuestaGenericaDto.ok(convenios);
     }
 
     @Override

@@ -59,7 +59,7 @@ public class GeneralConfig {
 
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addRedirectViewController("/", "/swagger-ui.html");
+                registry.addRedirectViewController("/api-controllers", "/swagger-ui.html");
             }
 
             @Override

@@ -9,8 +9,8 @@
 			<u th:text="${titulo}"></u>
 		</h1>
 
-		<a th:href="@{/edificio/form}" class="btn btn-success mb-2">Nuevo
-			Edificio</a>
+		<a th:href="@{/edificio/form}" class="btn btn-success mb-2">Nueva
+			Institucion</a>
 		<div class="alert alert-success" th:if="${success != null}"
 			th:text="${success}"></div>
 		<div class="alert alert-danger" th:if="${danger != null}"
@@ -24,23 +24,24 @@
 				<tr>
 					<th scope="col">Id</th>
 					<th scope="col">Nombre</th>
-					<th scope="col">Alias</th>
-					<th scope="col">Cantidad Salas</th>
-					<th scope="col">Salas</th>
+					<th scope="col">Correo</th>
+					<th scope="col">Convenios</th>
+					<th scope="col">Direccion</th>
+					<th scope="col">Telefono</th>
 					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="edificio: ${edificios}">
-					<td th:text="${edificio.id}"></td>
-					<td th:text="${edificio.nombre}"></td>
-					<td th:text="${edificio.alias}"></td>
+				<tr th:each="institucion: ${instituciones}">
+					<td th:text="${institucion.id}"></td>
+					<td th:text="${institucion.nombre}"></td>
+					<td th:text="${institucion.correo}"></td>
 					<td><span class="badge badge-success badge-pill"
-						th:text="${#lists.size(edificio.salas)}"></span>(Max. 15)</td>
+						th:text="${#lists.size(institucion.convenioEntities)}"></span>(Max. 15)</td>
 					<td>
 						<button type="button" class="btn btn-light" data-toggle="modal"
-							th:data-target="'#exampleModal'+${edificio.id}"><img th:src="@{/images/ver.svg}" alt="Spring logo" /></button>
-						<div class="modal fade" th:id="'exampleModal' + ${edificio.id}" tabindex="-1"
+							th:data-target="'#exampleModal'+${institucion.id}"><img th:src="@{/images/ver.svg}" alt="Spring logo" /></button>
+						<div class="modal fade" th:id="'exampleModal' + ${institucion.id}" tabindex="-1"
 							role="dialog" aria-labelledby="exampleModalScrollableTitle"
 							aria-hidden="true">
 							<div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -57,16 +58,21 @@
 										<table class="table">
 											<thead>
 												<tr>
-													<th scope="col">Sala</th>
-													<th scope="col">Capacidad</th>
-													<th scope="col"></th>
+													<th scope="col">Nombre</th>
+													<th scope="col">Fecha Inicio</th>
+													<th scope="col">Fecha Fin</th>
+													<th scope="col">Departamento</th>
+													<th scope="col">Tipo</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr th:each="sala: ${edificio.salas}">
-													<th scope="row" th:text="${sala.nombre}"></th>
-													<td th:text="${sala.capacidadEst}"></td>
-													<td> <a th:href="@{/salas/verSala/} + ${sala.id}"  type="button" class="btn btn-outline-info"><img th:src="@{/images/ver.svg}" alt="Spring logo" /></a></td>
+												<tr th:each="convenio: ${insitucion.convenioEntities}">
+													<th scope="row" th:text="${convenio.nombre}"></th>
+													<th scope="row" th:text="${convenio.fechaInicio}"></th>
+													<th scope="row" th:text="${convenio.fechaFin}"></th>
+													<th scope="row" th:text="${convenio.departamentoEntity.nombre}"></th>
+													<td th:text="${convenio.tipoConvenio.nombre}"></td>
+													<td> <a th:href="@{/convenio/verConvenio/} + ${convenio.id}"  type="button" class="btn btn-outline-info"><img th:src="@{/images/ver.svg}" alt="Spring logo" /></a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -80,14 +86,14 @@
 							</div>
 						</div>
 					</td>
-					<td><a th:href="@{/edificio/form/} + ${edificio.id}"
-						class="btn btn-primary">Editar Edificio</a></td>
-					<td><a th:if="${#lists.size(edificio.salas) < 15}"
-						th:href="@{/salas/form/} + ${edificio.id}" class="btn btn-primary">Agregar
+					<td><a th:href="@{/edificio/form/} + ${institucion.id}"
+						class="btn btn-primary">Editar Institucion</a></td>
+					<td><a th:if="${#lists.size(institucion.convenioEntities) < 15}"
+						th:href="@{/institucion/form/} + ${institucion.id}" class="btn btn-primary">Agregar
 							Sala</a></td>
 
 
-					<td><a th:href="@{/edificio/delete/} + ${edificio.id}"
+					<td><a th:href="@{/institucion/delete/} + ${institucion.id}"
 						class="btn btn-danger">Eliminar</a></td>
 				</tr>
 			</tbody>

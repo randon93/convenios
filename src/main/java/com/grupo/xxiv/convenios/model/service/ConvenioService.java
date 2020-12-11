@@ -3,6 +3,7 @@ package com.grupo.xxiv.convenios.model.service;
 
 import com.grupo.xxiv.convenios.model.domain.ConvenioDomain;
 import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
+import org.springframework.data.domain.Pageable;
 
 public interface ConvenioService {
 
@@ -13,6 +14,8 @@ public interface ConvenioService {
     RespuestaGenericaDto delete(Long id);
 
     RespuestaGenericaDto listAll();
+
+    RespuestaGenericaDto listAll(Pageable pageRequest);
 
     RespuestaGenericaDto findById(Long id);
 }
