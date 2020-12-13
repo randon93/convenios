@@ -5,6 +5,7 @@ import com.grupo.xxiv.convenios.model.dao.IConvenioDao;
 import com.grupo.xxiv.convenios.model.domain.ConvenioDomain;
 import com.grupo.xxiv.convenios.model.dto.RespuestaGenericaDto;
 import com.grupo.xxiv.convenios.model.entity.ConvenioEntity;
+import com.grupo.xxiv.convenios.model.entity.DepartamentoEntity;
 import com.grupo.xxiv.convenios.model.service.ConvenioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,7 +33,15 @@ public class ConvenioServiceImpl implements ConvenioService {
 
     @Override
     public RespuestaGenericaDto insert(ConvenioDomain domain) {
-        return null;
+        if (Objects.isNull(domain)) {
+            return RespuestaGenericaDto.error("Informacion vacia");
+        }
+        ConvenioEntity e = convenioMapper.convertToEntity(domain);
+        if (Objects.isNull(e)) {
+            return  RespuestaGenericaDto.error("Ocurrio un error en Converter Departamento");
+        }
+        Long id = getDao().save(e).getId();
+        return RespuestaGenericaDto.ok(id);
     }
 
     @Override
@@ -57,8 +66,12 @@ public class ConvenioServiceImpl implements ConvenioService {
     @Override
     public RespuestaGenericaDto listAll() {
         List<ConvenioDomain> convenioDomains = new ArrayList<>();
-        getDao().findAll().forEach(
-                ce -> convenioDomains.add(convenioMapper.convertToDomain(ce))
+        List<ConvenioEntity> convenioEntities = getDao().findAll();
+        convenioEntities.forEach(
+                ce -> {
+                    ConvenioDomain d = convenioMapper.convertToDomain(ce);
+                    convenioDomains.add(d);
+                }
         );
         return RespuestaGenericaDto.ok(convenioDomains);
     }

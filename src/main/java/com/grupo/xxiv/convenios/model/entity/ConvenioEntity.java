@@ -1,6 +1,9 @@
 package com.grupo.xxiv.convenios.model.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,7 +20,8 @@ import java.util.List;
 
 @Table(name = "convenio")
 @Entity
-@Data
+@Getter
+@Setter
 public class ConvenioEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -46,9 +46,15 @@ public class ConvenioMapper {
                 de -> documentoDomains.add(de.getId())
         );
         ConvenioDomain domain = modelMapper.map(entity, ConvenioDomain.class);
-        domain.setDepartamentoDomain(entity.getDepartamentoEntity().getId());
-        domain.setInstitucionDomain(entity.getInstitucionEntity().getId());
-        domain.setTipoConvenioDomain(entity.getTipoConvenio().getId());
+        if (entity.getDepartamentoEntity() != null){
+            domain.setDepartamentoDomain(entity.getDepartamentoEntity().getId());
+        }
+        if (entity.getInstitucionEntity() != null) {
+            domain.setInstitucionDomain(entity.getInstitucionEntity().getId());
+        }
+        if (entity.getTipoConvenio() != null){
+            domain.setTipoConvenioDomain(entity.getTipoConvenio().getId());
+        }
         return domain;
     }
 
@@ -63,7 +69,7 @@ public class ConvenioMapper {
                 }
         );
         ConvenioEntity entity = modelMapper.map(domain, ConvenioEntity.class);
-        DepartamentoEntity de = departamentoService.findById(domain.getId()).orElse(null);
+        DepartamentoEntity de = departamentoService.findById(domain.getDepartamentoDomain()).orElse(null);
         entity.setDepartamentoEntity(de);
         InstitucionEntity ie = institucionService.findById(domain.getInstitucionDomain()).orElse(null);
         entity.setInstitucionEntity(ie);

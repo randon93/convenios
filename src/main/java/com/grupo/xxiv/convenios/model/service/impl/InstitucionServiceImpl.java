@@ -50,7 +50,12 @@ public class InstitucionServiceImpl implements InstitucionService {
             return RespuestaGenericaDto.error("No se encontro la institucion " + domain.getId());
         }
         InstitucionEntity e = institucionMapper.convertToEntity(domain);
-        return RespuestaGenericaDto.ok(getDao().save(e));
+        try {
+            getDao().save(e);
+        }catch (Exception ex) {
+            return RespuestaGenericaDto.error("Error al actualizar dato en BD");
+        }
+        return RespuestaGenericaDto.ok(domain);
     }
 
     @Override

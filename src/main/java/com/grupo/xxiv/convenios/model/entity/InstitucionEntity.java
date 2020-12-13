@@ -2,6 +2,8 @@ package com.grupo.xxiv.convenios.model.entity;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,7 +18,8 @@ import java.util.List;
 
 @Table(name = "institucion")
 @Entity
-@Data
+@Getter
+@Setter
 public class InstitucionEntity implements Serializable {
 
 
